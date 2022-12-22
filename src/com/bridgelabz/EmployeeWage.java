@@ -1,7 +1,8 @@
 package com.bridgelabz;
 
 public class EmployeeWage {
-    private static void main(String[]args)
+
+    public static void main(String[]args)
         { System.out.println("Welcome to employee wage");
     int FULL_TIME = 2;
     int PART_TIME = 1;
