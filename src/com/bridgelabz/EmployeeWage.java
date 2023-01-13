@@ -3,30 +3,31 @@ package com.bridgelabz;
 public class EmployeeWage {
 
 
-    static final int WAGE_PER_HOUR = 20;
+ ;
     static final int IS_FULL_TIME = 1;
     static final int IS_PART_TIME = 2;
     static final int FULL_DAY_HOUR = 8;
     static final int PART_TIME_HOUR = 4;
-    static final int MAX_WORKING_HOUR = 100;
-    static final int WORKING_DAYS_PER_MONTH = 20;
 
+    void calculateEmployeeWage(String company, int wage, int numberOfWorkingDays, int workingHrsPerMonth) {
+        System.out.println("** Calculating Employee wage for " + company + " **");
+        int wagePerHour = wage;
+        int maxWorkingDays = numberOfWorkingDays;
+        int maxWorkingHour = workingHrsPerMonth;
 
-    static void calculateEmployeeWage(String companyName, int empRatePerHour, int numOfWorkingDays, int maxHoursInMonth) {
         int totalWorkingDays = 1;
         int totalWage = 0;
-        int empWorkingDays = 0;
+        int empWorkingDays=0;
         int totalEmpHrs = 0;
 
-        while (totalEmpHrs <= MAX_WORKING_HOUR && totalWorkingDays <= WORKING_DAYS_PER_MONTH) {
-
-            int empCheck = (int) (Math.random() * 3);
+        while (totalEmpHrs <= maxWorkingHour && totalWorkingDays <= maxWorkingDays) {
+            int empCheck=(int) (Math.random()*3);
             int dailyWage = 0;
 
             switch (empCheck) {
                 case IS_FULL_TIME: {
                     System.out.println("Employee is Present full time on day " + totalWorkingDays);
-                    dailyWage = WAGE_PER_HOUR * FULL_DAY_HOUR;
+                    dailyWage  = wagePerHour * FULL_DAY_HOUR;
                     totalWage += dailyWage;
                     System.out.println("Total wage after day " + totalWorkingDays + " is : " + totalWage + "\n");
                     totalEmpHrs = totalEmpHrs + FULL_DAY_HOUR;
@@ -35,11 +36,11 @@ public class EmployeeWage {
                 }
                 case IS_PART_TIME: {
                     System.out.println("Employee is Present part time on day " + totalWorkingDays);
-                    dailyWage = WAGE_PER_HOUR * PART_TIME_HOUR;
+                    dailyWage = wagePerHour * PART_TIME_HOUR;
                     totalWage += dailyWage;
                     System.out.println("Total wage after day " + totalWorkingDays + " is : " + totalWage + "\n");
                     totalEmpHrs = totalEmpHrs + PART_TIME_HOUR;
-                    empWorkingDays += 1;
+                    empWorkingDays +=1;
                     break;
                 }
                 default:
@@ -48,26 +49,21 @@ public class EmployeeWage {
             }
             totalWorkingDays++;
         }
-
         System.out.println("***************");
         System.out.println("Employee work for total of " + empWorkingDays + " days.");
         System.out.println("Employee works for total of " + totalEmpHrs + "hours.");
-        System.out.println("Total salary of the employee after " + WORKING_DAYS_PER_MONTH + " days is : " + totalWage);
-        System.out.println(companyName + " company Employee Monthly Wage : $" + totalWage + "\n\n");
+        System.out.println("Total salary of the employee after " + maxWorkingDays + " days is : " + totalWage);
 
     }
+
+
 
     public static void main(String[] args) {
         System.out.println("***Welcome to employee wage computation problem.***\n");
 
-
-        calculateEmployeeWage("Google", 50, 15, 200);
-        calculateEmployeeWage("Amazon", 80, 20, 120);
-        calculateEmployeeWage("flipkart", 60, 20, 100);
-        calculateEmployeeWage("Netflix", 90, 18, 220);
-        calculateEmployeeWage("facebook", 100, 20, 250);
-
-
+        EmployeeWage obj1 = new  EmployeeWage ();
+        obj1.calculateEmployeeWage("Company1", 20, 30, 100);
     }
 
 }
+
